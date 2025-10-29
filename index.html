@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Cancer Institute - Leading Cancer Research & Treatment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .tell-us-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 0.7rem 1.5rem !important;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+        }
+
+        .tell-us-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-top: 4px solid transparent;
+        }
+
+        .feature-card:nth-child(1) {
+            border-top-color: #4facfe;
+        }
+
+        .feature-card:nth-child(2) {
+            border-top-color: #f093fb;
+        }
+
+        .feature-card:nth-child(3) {
+            border-top-color: #43e97b;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card:nth-child(1) .feature-icon {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .feature-card:nth-child(2) .feature-icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .feature-card:nth-child(3) .feature-icon {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e3c72;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Services Section */
+        .services {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .service-item:hover {
+            border-left-width: 8px;
+            padding-left: 1.2rem;
+        }
+
+        .service-item h4 {
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3c72;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #4facfe;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Modal for Tell Us */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 3% auto;
+            padding: 2.5rem;
+            border-radius: 15px;
+            max-width: 650px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+            transition: all 0.3s;
+        }
+
+        .close:hover {
+            color: #333;
+            transform: rotate(90deg);
+        }
+
+        .modal h2 {
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            color: #667eea;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: #1e3c72;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #999;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 1rem;
+            animation: slideIn 0.3s;
+        }
+
+        .success-message h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                padding: 0 1rem;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+                background: #1e3c72;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+
+            nav a {
+                display: block;
+                padding: 1rem;
+                width: 100%;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .modal-content {
+                margin: 2% auto;
+                padding: 1.5rem;
+                width: 95%;
+            }
+
+            .close {
+                right: 0.5rem;
+                top: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .features {
+                padding: 0 1rem;
+            }
+
+            .services {
+                padding: 0 1rem;
+            }
+
+            .logo span {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">🔬</div>
+                <span>Hope Cancer Institute</span>
+            </div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#treatment">Treatment</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#" class="tell-us-btn" id="tellUsBtn">Tell Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Leading the Fight Against Cancer</h1>
+            <p>Advanced research, compassionate care, and innovative treatments for a brighter tomorrow</p>
+            <a href="#treatment" class="cta-button">Explore Our Services</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🔬</div>
+            <h3>Cutting-Edge Research</h3>
+            <p>Our world-class researchers are pioneering breakthrough treatments and advancing cancer science through innovative clinical trials and collaborative studies.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💙</div>
+            <h3>Patient-Centered Care</h3>
+            <p>We combine advanced medical expertise with compassionate, personalized care that addresses the physical, emotional, and psychological needs of each patient.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">✨</div>
+            <h3>Safety First Approach</h3>
+            <p>Our commitment to patient safety is unwavering. We utilize state-of-the-art technology and rigorous protocols to ensure the highest standards of care.</p>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Years of Excellence</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Patients Treated</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Clinical Trials</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Patient Satisfaction</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="treatment">
+        <h2>Our Specialized Services</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <h4>Medical Oncology</h4>
+                <p>Comprehensive chemotherapy and immunotherapy treatments</p>
+            </div>
+            <div class="service-item">
+                <h4>Radiation Therapy</h4>
+                <p>Precision radiation treatments with minimal side effects</p>
+            </div>
+            <div class="service-item">
+                <h4>Surgical Oncology</h4>
+                <p>Advanced surgical techniques for tumor removal</p>
+            </div>
+            <div class="service-item">
+                <h4>Clinical Research</h4>
+                <p>Access to groundbreaking clinical trials and studies</p>
+            </div>
+            <div class="service-item">
+                <h4>Support Services</h4>
+                <p>Counseling, nutrition, and rehabilitation programs</p>
+            </div>
+            <div class="service-item">
+                <h4>Genetic Testing</h4>
+                <p>Personalized medicine based on genetic profiles</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Leadership Team</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">News & Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Patient Care</h3>
+                <ul>
+                    <li><a href="#">Find a Doctor</a></li>
+                    <li><a href="#">Patient Portal</a></li>
+                    <li><a href="#">Insurance</a></li>
+                    <li><a href="#">Patient Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Research</h3>
+                <ul>
+                    <li><a href="#">Clinical Trials</a></li>
+                    <li><a href="#">Publications</a></li>
+                    <li><a href="#">Collaborate</a></li>
+                    <li><a href="#">Research Labs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">Appointments</a></li>
+                    <li><a href="#">Locations</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Donate</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Hope Cancer Institute. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Tell Us Feedback -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Got a Query or Suggestion?</h2>
+            <p class="modal-subtitle">We have you covered</p>
+            
+            <form id="feedbackForm" class="feedback-form">
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="userType">I am a *</label>
+                    <select id="userType" name="userType" required>
+                        <option value="">-- Select --</option>
+                        <option value="patient">Patient</option>
+                        <option value="staff">Staff</option>
+                        <option value="faculty">Faculty</option>
+                        <option value="guest">Guest</option>
+                    </select>
+                </div>
+
+                <div class="form-group hidden" id="idGroup">
+                    <label for="userId">ID Number *</label>
+                    <input type="text" id="userId" name="userId" placeholder="Enter your ID number">
+                </div>
+
+                <div class="form-group hidden" id="emailGroup">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address">
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">How was your experience with us? (if applicable)</label>
+                    <input type="text" id="experience" name="experience" placeholder="Share your experience">
+                </div>
+
+                <div class="form-group">
+                    <label for="feedback">Suggestions / Feedback *</label>
+                    <textarea id="feedback" name="feedback" placeholder="Please share your suggestions or feedback..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Feedback</button>
+            </form>
+
+            <div id="successMessage" class="success-message hidden">
+                <h3>Thank You for Your Feedback! 🎉</h3>
+                <p>This is a demonstration website. In a live environment, your valuable feedback would be securely stored and reviewed by our team within 24-48 hours.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            this.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                menuToggle.textContent = '☰';
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('feedbackModal');
+        const btn = document.getElementById('tellUsBtn');
+        const span = document.getElementsByClassName('close')[0];
+        const form = document.getElementById('feedbackForm');
+        const userTypeSelect = document.getElementById('userType');
+        const idGroup = document.getElementById('idGroup');
+        const emailGroup = document.getElementById('emailGroup');
+        const userIdInput = document.getElementById('userId');
+        const emailInput = document.getElementById('email');
+        const successMessage = document.getElementById('successMessage');
+
+        // Open modal
+        btn.onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = 'block';
+        }
+
+        // Close modal
+        span.onclick = function() {
+            closeModal();
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            form.reset();
+            idGroup.classList.add('hidden');
+            emailGroup.classList.add('hidden');
+            userIdInput.removeAttribute('required');
+            emailInput.removeAttribute('required');
+            successMessage.classList.add('hidden');
+            form.classList.remove('hidden');
+        }
+
+        // Handle user type dropdown change
+        userTypeSelect.addEventListener('change', function() {
+            const selectedType = this.value;
+            
+            // Reset fields
+            idGroup.classList.add('hidden');
+            emailGroup.classList.add('hidden');
+            userIdInput.removeAttribute('required');
+            emailInput.removeAttribute('required');
+            userIdInput.value = '';
+            emailInput.value = '';
+
+            // Show appropriate field
+            if (selectedType === 'patient' || selectedType === 'staff' || selectedType === 'faculty') {
+                idGroup.classList.remove('hidden');
+                userIdInput.setAttribute('required', 'required');
+            } else if (selectedType === 'guest') {
+                emailGroup.classList.remove('hidden');
+                emailInput.setAttribute('required', 'required');
+            }
+        });
+
+        // Handle form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Hide form and show success message
+            form.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+
+            // Auto close modal after 4 seconds
+            setTimeout(function() {
+                closeModal();
+            }, 10000);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
